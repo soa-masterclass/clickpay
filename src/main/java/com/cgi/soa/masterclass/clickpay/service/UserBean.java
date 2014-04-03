@@ -1,8 +1,10 @@
-package com.cgi.soa.masterclass.clickpay.model;
+package com.cgi.soa.masterclass.clickpay.service;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
+import com.cgi.soa.masterclass.clickpay.model.UserEntity;
 
 /**
  * Session Bean implementation class UserBean
@@ -21,10 +23,8 @@ public class UserBean implements UserBeanLocal {
     }
 
 	@Override
-	public void createUser(String firstname, String lastName, String email,
-			String accountNumber, String accountFirstName,
-			String accountLastName) {
-		// TODO Auto-generated method stub
+	public void createUser(UserEntity user) {
+		entityManager.persist(user);
 		
 	}
 

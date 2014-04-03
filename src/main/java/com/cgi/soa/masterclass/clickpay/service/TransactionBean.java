@@ -1,10 +1,13 @@
 package com.cgi.soa.masterclass.clickpay.service;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import com.cgi.soa.masterclass.clickpay.model.TransactionEntity;
+import com.cgi.soa.masterclass.clickpay.model.UserEntity;
 
 /**
  * Session Bean implementation class TransactionBean
@@ -39,6 +42,16 @@ public class TransactionBean implements TransactionBeanLocal {
 		//calculate fee
 		float fee = bean.getAmount() * TRANSACTION_FEE_RATE;
 //		FeeEntity feeEntity = new FeeEntity();
+	}
+	
+	public List<TransactionEntity> showUserTransactions(UserEntity UserBean){
+		List<TransactionEntity> userTransactions = entityManager.createQuery(
+				"SELECT e FROM " + TransactionEntity.class.getName() + " e " +
+				"WHERE  recipient = " + UserBean + "OR sender = " + UserBean,
+				TransactionEntity.class).getResultList();
+//		entityManager.getTransaction().commit();
+		return userTransactions;
+		
 	}
 
 }

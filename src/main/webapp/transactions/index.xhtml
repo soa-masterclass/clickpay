@@ -81,31 +81,19 @@
 	      	</tr>	
       	</thead>
       	<tbody>
-      		<tr>
-      			<td>1</td>
-      			<td>12.01.2014 08:12:19</td>
-      			<td>John Smith</td>
-      			<td>New Software License</td>
-      			<td align="right">0,00</td>
-      			<td align="right">-1.020,03</td>
-      		</tr>
-      		<tr>
-      			<td>2</td>
-      			<td>18.01.2014 16:54:55</td>
-      			<td>Marc Mustermann</td>
-      			<td>Deposit</td>
-      			<td align="right">0,00</td>
-      			<td align="right">730,10</td>
-      		</tr>
-      		<tr>
-      			<td>3</td>
-      			<td>20.02.2014 14:09:10</td>
-      			<td>René Miller</td>
-      			<td>DVD Rental</td>
-      			<td align="right">0,43</td>
-      			<td align="right">14,10</td>
-      		</tr>
-      	</tbody>
+      		<ui:repeat var="o" value="#{transactionController.all}" varStatus="status">
+	 
+		<tr>
+			<td>#{o.Id}</td>
+			<td>#{o.transdate}</td>
+			<td>#{o.recipient}</td>
+			<td>#{o.purpose}</td>
+			<td>#{o.fee}</td>
+			<td>#{o.amount}</td>
+			<td align="right">200,98</td>
+		</tr>
+	   </ui:repeat>
+       </tbody>
       </table>
 
       <hr />

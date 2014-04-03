@@ -7,15 +7,24 @@ import javax.inject.Inject;
 import javax.transaction.Transaction;
 
 import com.cgi.soa.masterclass.clickpay.model.TransactionEntity;
+import com.cgi.soa.masterclass.clickpay.model.UserEntity;
 import com.cgi.soa.masterclass.clickpay.service.TransactionBeanLocal;
 
 public class TransactionController {
 
 	private static final long serialVersionUID = -9137530186564436028L;
 
+	private User user;
 	private Transaction transaction;
+	UserEntity userEntity = new UserEntity(user.getEmail(),
+			user.getFirstName(), user.getLastName(), Integer.parseInt(user
+					.getAccnumber()), user.getAccountFirstName(),
+			user.getAccountLastName());
 	
-	private List<Transaction> allTransactions = new ArrayList<Transaction>();
+	//TransactionEntity transactionEntity = new TransactionEntity(transaction.getSender(), transaction.getRecipient(), 
+	//		transaction.getTransdate(), transaction.getPurpose(), transaction.getAmount());
+	
+	private List<Transaction> userTransactions = new ArrayList<Transaction>();
 
 	@Inject
 	private TransactionBeanLocal transactionBean;
@@ -24,37 +33,31 @@ public class TransactionController {
 	public String createTransaction() {
 		
 		
-		TransactionEntity transactionEntity = new TransactionEntity(((TransactionEntity) transaction).getAmount(),
-				((TransactionEntity) transaction).getId(), ((TransactionEntity) transaction).getPurpose(),
-				((TransactionEntity) transaction).getRecipient(),
-				((TransactionEntity) transaction).getSender(), transaction.getTransdate());
+		UserEntity userEntity = new UserEntity(user.getEmail(),
+				user.getFirstName(), user.getLastName(), Integer.parseInt(user
+						.getAccnumber()), user.getAccountFirstName(),
+				user.getAccountLastName());
 
-		transactionBean.createTransaction(transactionEntity);
+		/*
+		if(transaction.getPurpose()="")  transactionBean.clear(TransactionEntity);
+		if(transaction.getPurpose()="")  transactionBean.deposit(TransactionEntity);
+		if(transaction.getPurpose()="")  transactionBean.pay(TransactionEntity);
+		*/
 		return "/transactions/index.html?faces-redirect=true";
 
 	}
 
-	public List<Transaction> getAllTransactions() {
+	public List<Transaction> showUserTransactions() {
 
-		allTransactions.clear();
-		for (TransactionEntity entity : transactionBean.showAllTransactions()) {
-			allTransactions.add(new Transaction(entity.getFirstname(), entity.getLastname(),
-					String.valueOf(entity.getAccnumber()), entity
-							.getAcc_firstname(), entity.getAcc_lastname(),
-					entity.getEmail()));
+		userTransactions.clear();
+		/*
+		for (TransactionEntity entity : transactionBean.showUserTransactions(userEntity)) {
+			userTransactions.add(new Transaction(entity.getSender(), entity.getRecipient(), 
+					entity.getTransdate(), entity.getPurpose(), entity.getAmount()  ));
+					
 		}
-		return allTransactions;
-	}
-
-	public Transaction getTransaction() {
-		if (transaction == null) {
-			transaction = new Transaction();
-		}
-		return transaction;
-	}
-
-	public void setTransaction(Transaction transaction) {
-		this.transaction = transaction;
+		*/
+		return userTransactions;
 	}
 
 

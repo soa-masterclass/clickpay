@@ -52,22 +52,22 @@
     </div>
 
     <div class="container">
-      <h1>Crete User</h1>
+      <h1>Create User</h1>
     
 	  <form jsf:id="form">
 			<div class="row">
 				<div class="col-md-6">
 					<div class="form-group">
 						<label for="form:firstName">First name</label> <input
-							type="text" class="form-control" jsf:id="firstName"
-							required="required" jsf:required="true" value="#{user.firstName}"
+							type="text" class="form-control" jsf:id="firstName" jsf:value="#{userController.user.firstName}"
+							required="required" jsf:required="true"
 							placeholder="Enter First name" />
 					</div>
 				</div>
 				<div class="col-md-6">
 					<div class="form-group">
 						<label for="form:lastName">Last name</label> <input
-							type="text" class="form-control" jsf:id="lastName" value="#{user.lastName}"
+							type="text" class="form-control" jsf:id="lastName" jsf:value="#{userController.user.lastName}"
 							required="required" jsf:required="true"
 							placeholder="Enter Last name" />
 					</div>
@@ -75,13 +75,13 @@
 			</div>
 			<div class="form-group">
 				<label for="form:email">EMail</label> <input
-					type="email" class="form-control" jsf:id="email" value="#{user.email}"
+					type="email" class="form-control" jsf:id="email" jsf:value="#{userController.user.email}"
 					required="required" jsf:required="true"
 					placeholder="Enter Email" />
 			</div>
 			<div class="form-group">
 				<label for="form:accountNumber">Account Number</label>
-				<input type="text" class="form-control" jsf:id="accountNumber" value="#{user.accountNumber}"
+				<input type="text" class="form-control" jsf:id="accountNumber" jsf:value="#{userController.user.accnumber}"
 					required="required" jsf:required="true"
 					placeholder="Enter Account Number" />
 			</div>
@@ -90,7 +90,7 @@
 					<div class="form-group">
 						<label for="form:accountFirstName">Account First name</label>
 						<input type="text" class="form-control"
-							jsf:id="accountFirstName" value="#{user.accountFirstName}" required="required" jsf:required="true"
+							jsf:id="accountFirstName" required="required" jsf:required="true" jsf:value="#{userController.user.accountFirstName}"
 							placeholder="Enter Account First name" />
 					</div>
 				</div>
@@ -98,12 +98,12 @@
 					<div class="form-group">
 						<label for="form:accountLastName">Account Last name</label>
 						<input type="text" class="form-control"
-							jsf:id="accountLastName" value="#{user.accountLastName}" required="required" jsf:required="true"
+							jsf:id="accountLastName" required="required" jsf:required="true" jsf:value="#{userController.user.accountLastName}"
 							placeholder="Enter Account Last name" />
 					</div>
 				</div>
 			</div>
-			<button type="submit" class="btn btn-default" action="#{UserControler.createUser}">Create User</button>
+			<button type="submit" class="btn btn-default" jsf:action="#{userController.createUser}">Create User</button>
 		</form>
 
       <hr />

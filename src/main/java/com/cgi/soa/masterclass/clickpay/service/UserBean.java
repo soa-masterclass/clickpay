@@ -26,19 +26,20 @@ public class UserBean implements UserBeanLocal {
 
 	@Override
 	public void createUser(UserEntity user) {
-		entityManager.getTransaction().begin();
+		
+//		entityManager.getTransaction().begin();
 		entityManager.persist(user);
-		entityManager.getTransaction().commit();
+//		entityManager.getTransaction().commit();
 
 	}
 
 	@Override
 	public List<UserEntity> showAllUsers() {
-		entityManager.getTransaction().begin();
+//		entityManager.getTransaction().begin();
 		List<UserEntity> results = entityManager.createQuery(
 				"SELECT e FROM " + UserEntity.class.getName() + " e",
 				UserEntity.class).getResultList();
-		entityManager.getTransaction().commit();
+//		entityManager.getTransaction().commit();
 		return results;
 
 	}

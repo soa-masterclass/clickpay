@@ -23,7 +23,7 @@ public class UserEntity implements Serializable {
 	private int Id;
 	
 	@Column(unique=true)
-	private int email;
+	private String email;
 	
 	@Column
 	private String firstname;
@@ -53,29 +53,27 @@ public class UserEntity implements Serializable {
 		Id = id;
 	}
 
-	public int getEmail() {
+	public String getEmail() {
 		return email;
 	}
 
-	public void setEmail(int email) {
+	public void setEmail(String email) {
 		this.email = email;
 	}
 
 	public UserEntity() {
 		
 	}
-	public UserEntity(int id, int email, String firstname, String lastname,
-			int accnumber, String acc_firstname, String acc_lastname,
-			float balance) {
+	public UserEntity(String email, String firstname, String lastname,
+			int accnumber, String acc_firstname, String acc_lastname) {
 		super();
-		Id = id;
 		this.email = email;
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.accnumber = accnumber;
 		this.acc_firstname = acc_firstname;
 		this.acc_lastname = acc_lastname;
-		this.balance = balance;
+		this.balance = 0;
 	}
 
 	public String getFirstname() {

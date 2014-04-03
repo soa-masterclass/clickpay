@@ -1,6 +1,7 @@
 package com.cgi.soa.masterclass.clickpay.faces;
 
 import java.io.Serializable;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -14,8 +15,23 @@ public class User implements Serializable {
 	private String accnumber;
 	private String accountFirstName;
 	private String accountLastName;
-	private float balance;
+//	private float balance;
 	private String email;
+	
+	public User() {
+		//
+	}
+
+	public User(String firstName, String lastName, String accnumber,
+			String accountFirstName, String accountLastName, String email) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.accnumber = accnumber;
+		this.accountFirstName = accountFirstName;
+		this.accountLastName = accountLastName;
+		this.email = email;
+	}
 
 	public String getFirstName() {
 		return firstName;
@@ -57,13 +73,6 @@ public class User implements Serializable {
 		this.accountLastName = accountLastName;
 	}
 
-	public float getBalance() {
-		return balance;
-	}
-
-	public void setBalance(float balance) {
-		this.balance = balance;
-	}
 
 	public String getEmail() {
 		return email;

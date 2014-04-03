@@ -1,6 +1,6 @@
 package com.cgi.soa.masterclass.clickpay.service;
 
-import java.util.Collection;
+import java.util.List;
 
 import javax.ejb.Local;
 
@@ -13,6 +13,6 @@ public interface UserBeanLocal {
 	
 	
 	
-	public Collection<UserEntity> showAllUsers();
+	public List<UserEntity> showAllUsers();
 
 }

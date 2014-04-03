@@ -22,16 +22,16 @@ public class TransactionBean implements TransactionBeanLocal {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void deposit(TransactionBean bean) {
+	public void deposit(TransactionEntity bean) {
 		entityManager.persist(bean);
 
 	}
 
-	public void clear(TransactionBean bean) {
+	public void clear(TransactionEntity bean) {
 		entityManager.persist(bean);
 	}
 
-	public void pay(TransactionBean bean) {
+	public void pay(TransactionEntity bean) {
 		entityManager.persist(bean);
 	}
 

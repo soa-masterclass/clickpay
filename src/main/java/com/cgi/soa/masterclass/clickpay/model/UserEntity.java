@@ -61,6 +61,23 @@ public class UserEntity implements Serializable {
 		this.email = email;
 	}
 
+	public UserEntity() {
+		
+	}
+	public UserEntity(int id, int email, String firstname, String lastname,
+			int accnumber, String acc_firstname, String acc_lastname,
+			float balance) {
+		super();
+		Id = id;
+		this.email = email;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.accnumber = accnumber;
+		this.acc_firstname = acc_firstname;
+		this.acc_lastname = acc_lastname;
+		this.balance = balance;
+	}
+
 	public String getFirstname() {
 		return firstname;
 	}

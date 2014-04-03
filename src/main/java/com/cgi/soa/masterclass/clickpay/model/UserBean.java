@@ -21,10 +21,8 @@ public class UserBean implements UserBeanLocal {
     }
 
 	@Override
-	public void createUser(String firstname, String lastName, String email,
-			String accountNumber, String accountFirstName,
-			String accountLastName) {
-		// TODO Auto-generated method stub
+	public void createUser(UserEntity user) {
+		entityManager.persist(user);
 		
 	}
 

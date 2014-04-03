@@ -1,8 +1,11 @@
 package com.cgi.soa.masterclass.clickpay.service;
 
+import java.util.Collection;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import com.cgi.soa.masterclass.clickpay.model.UserEntity;
 
@@ -19,18 +22,24 @@ public class UserBean implements UserBeanLocal {
      * Default constructor. 
      */
     public UserBean() {
-        // TODO Auto-generated constructor stub
+        //
     }
 
 	@Override
 	public void createUser(UserEntity user) {
+		entityManager.getTransaction().begin();
 		entityManager.persist(user);
+		entityManager.getTransaction().commit();
 		
 	}
 
 	@Override
-	public void showAllUsers() {
-		// TODO Auto-generated method stub
+	public Collection<UserEntity> showAllUsers() {
+		entityManager.getTransaction().begin();
+	    Query query = entityManager.createQuery("SELECT e FROM Professor e");
+	    Collection<UserEntity> results = (Collection<UserEntity>) query.getResultList();
+	    entityManager.getTransaction().commit();
+	    return results;
 		
 	}
 

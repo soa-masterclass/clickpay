@@ -2,6 +2,7 @@ package com.cgi.soa.masterclass.clickpay.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -17,7 +18,7 @@ public class UserEntity implements Serializable {
 	@Id
 	private int Id;
 	
-	@Unique
+	@Column(unique=true)
 	private int email;
 	
 	private String firstname;

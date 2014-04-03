@@ -9,7 +9,6 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.cgi.soa.masterclass.clickpay.model.UserEntity;
-import com.cgi.soa.masterclass.clickpay.service.BankWSLocal;
 import com.cgi.soa.masterclass.clickpay.service.UserBeanLocal;
 
 @Named

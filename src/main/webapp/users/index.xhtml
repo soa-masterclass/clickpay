@@ -73,36 +73,22 @@
       	</tr>	
       	</thead>
       	<tbody>
-      		<tr>
-      			<td>Marc</td>
-      			<td>Mustermann</td>
-      			<td>marc.mustermann@email.com</td>
-      			<td>4</td>
-      			<td>Marc</td>
-      			<td>Mustermann</td>
-      			<td align="right">1.764,23</td>
-      			<td><a jsf:outcome="/transactions/index.xhtml">Transactions</a></td>
-      		</tr>
-      		<tr>
-      			<td>John</td>
-      			<td>Smith</td>
-      			<td>john.smith@unknown.com</td>
-      			<td>8</td>
-      			<td>Smith</td>
-      			<td>Technology</td>
-      			<td align="right">200,98</td>
-      			<td><a jsf:outcome="/transactions/index.xhtml">Transactions</a></td>
-      		</tr>
-      		<tr>
-      			<td>René</td>
-      			<td>Miller</td>
-      			<td>rene.miller@trash.com</td>
-      			<td>7</td>
-      			<td>Rene</td>
-      			<td>Miller</td>
-      			<td align="right">2.332,65</td>
-      			<td><a jsf:outcome="/transactions/index.xhtml">Transactions</a></td>
-      		</tr>
+ 
+	   <ui:repeat var="o" value="#{userController.getUsers}" varStatus="status">
+	 
+		<tr>
+			<td>#{o.firstName}</td>
+			<td>#{o.lastName}</td>
+			<td>#{o.email}</td>
+			<td>#{o.accnumber}</td>
+			<td>#{o.accountFirstName}</td>
+			<td>#{o.accountLastName}</td>
+			<td align="right">200,98</td>
+			<td><a jsf:outcome="/transactions/index.xhtml">Transactions</a></td>
+		</tr>
+	 
+	   </ui:repeat>
+ 
       	</tbody>
       </table>
 

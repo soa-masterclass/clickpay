@@ -49,6 +49,17 @@ public class TransactionEntity implements Serializable {
 	public TransactionEntity() {
 	}   
 	
+	public TransactionEntity(int id, User sender, User recipient,
+			Date transdate, String purpose, float amount) {
+		super();
+		Id = id;
+		this.sender = sender;
+		this.recipient = recipient;
+		this.transdate = transdate;
+		this.purpose = purpose;
+		this.amount = amount;
+	}
+
 	public int getId() {
 		return this.Id;
 	}

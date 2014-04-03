@@ -19,6 +19,13 @@ import javax.persistence.Table;
 public class FeeEntity implements Serializable {
 
 	   
+	public FeeEntity(int id, TransactionEntity transaction, float amount) {
+		super();
+		Id = id;
+		this.transaction = transaction;
+		this.amount = amount;
+	}
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int Id;

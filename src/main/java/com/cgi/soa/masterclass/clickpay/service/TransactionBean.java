@@ -11,6 +11,8 @@ import com.cgi.soa.masterclass.clickpay.model.TransactionEntity;
  */
 @Stateless
 public class TransactionBean implements TransactionBeanLocal {
+	
+	private float TRANSACTION_FEE_RATE = 0.03f;
 
 	@PersistenceContext
 	private EntityManager entityManager;
@@ -33,6 +35,10 @@ public class TransactionBean implements TransactionBeanLocal {
 
 	public void pay(TransactionEntity bean) {
 		entityManager.persist(bean);
+		
+		//calculate fee
+		float fee = bean.getAmount() * TRANSACTION_FEE_RATE;
+//		FeeEntity feeEntity = new FeeEntity();
 	}
 
 }

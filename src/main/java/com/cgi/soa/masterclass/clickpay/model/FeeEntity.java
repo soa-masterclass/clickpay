@@ -19,9 +19,8 @@ import javax.persistence.Table;
 public class FeeEntity implements Serializable {
 
 	   
-	public FeeEntity(int id, TransactionEntity transaction, float amount) {
+	public FeeEntity(TransactionEntity transaction, float amount) {
 		super();
-		Id = id;
 		this.transaction = transaction;
 		this.amount = amount;
 	}

@@ -1,9 +1,23 @@
 package com.cgi.soa.masterclass.clickpay.faces;
 
-public class User {
+import java.io.Serializable;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
-	public User() {
-		//  TODO Auto-generated constructor stub
+@ManagedBean
+@SessionScoped
+public class User implements Serializable {
+
+	private static final long serialVersionUID = 3943840197882902274L;
+	private String name;
+
+	public String getName() {
+		return name;
 	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
 
 }

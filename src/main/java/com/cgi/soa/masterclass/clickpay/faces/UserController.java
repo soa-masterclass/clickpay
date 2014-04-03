@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.cgi.soa.masterclass.clickpay.model.UserEntity;
+import com.cgi.soa.masterclass.clickpay.service.BankWSLocal;
 import com.cgi.soa.masterclass.clickpay.service.UserBeanLocal;
 
 @Named
@@ -23,8 +24,11 @@ public class UserController implements Serializable {
 
 	@Inject
 	private UserBeanLocal userBean;
-
+	
+	
 	public String createUser() {
+		
+		
 		UserEntity userEntity = new UserEntity(user.getEmail(),
 				user.getFirstName(), user.getLastName(), Integer.parseInt(user
 						.getAccnumber()), user.getAccountFirstName(),
@@ -57,5 +61,6 @@ public class UserController implements Serializable {
 	public void setUser(User user) {
 		this.user = user;
 	}
+	
 
 }

@@ -81,7 +81,7 @@
 			</div>
 			<div class="form-group">
 				<label for="form:accountNumber">Account Number</label>
-				<input type="text" class="form-control" jsf:id="accountNumber" jsf:value="#{userController.user.accnumber}"
+				<input type="text" class="form-control" jsf:id="accountNumber" jsf:value="#{userController.user.accnumber}" jsf:validator="bankvalidator"
 					required="required" jsf:required="true"
 					placeholder="Enter Account Number" />
 			</div>

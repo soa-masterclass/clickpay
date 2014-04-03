@@ -3,10 +3,12 @@ package com.cgi.soa.masterclass.clickpay.service;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import com.cgi.soa.masterclass.clickpay.model.UserEntity;
+import com.cgi.soa.masterclass.clickpay.samplebank.ws.BankWeb;
 
 /**
  * Session Bean implementation class UserBean
@@ -17,6 +19,7 @@ public class UserBean implements UserBeanLocal {
 	@PersistenceContext
 	private EntityManager entityManager;
 
+	
 	/**
 	 * Default constructor.
 	 */
@@ -43,5 +46,7 @@ public class UserBean implements UserBeanLocal {
 		return results;
 
 	}
-
+	
+ 
+ 
 }

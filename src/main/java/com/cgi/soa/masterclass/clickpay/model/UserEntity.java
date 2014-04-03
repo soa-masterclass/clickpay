@@ -1,22 +1,28 @@
 package com.cgi.soa.masterclass.clickpay.model;
 
 import java.io.Serializable;
+import java.util.Collection;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
  * Entity implementation class for Entity: UserEntity
+ * @param <Transaction>
  *
  */
 @Entity
 @Table
 public class UserEntity implements Serializable {
 
+	@OneToMany(fetch=FetchType.LAZY, mappedBy="sender")
+	private Collection<TransactionEntity> transaction;
 	   
 	@Id  
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

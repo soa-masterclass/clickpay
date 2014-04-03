@@ -1,6 +1,8 @@
-package com.cgi.soa.masterclass.clickpay.model;
+package com.cgi.soa.masterclass.clickpay.service;
 
 import javax.ejb.Local;
+
+import com.cgi.soa.masterclass.clickpay.model.UserEntity;
 
 @Local
 public interface UserBeanLocal {

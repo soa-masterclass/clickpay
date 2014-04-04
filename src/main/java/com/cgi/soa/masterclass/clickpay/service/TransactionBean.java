@@ -1,5 +1,6 @@
 package com.cgi.soa.masterclass.clickpay.service;
 
+import java.util.Collection;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -28,21 +29,24 @@ public class TransactionBean implements TransactionBeanLocal {
 		// 
 	}
 
-	public void deposit(TransactionEntity bean) {
-		entityManager.persist(bean);
+	public void deposit(UserEntity user, TransactionEntity transaction) {
+		entityManager.persist(transaction);
+		entityManager.persist(user);
 
 	}
 
-	public void clear(TransactionEntity bean) {
-		entityManager.persist(bean);
+	public void clear(UserEntity user, TransactionEntity transaction) {
+		entityManager.persist(transaction);
+		entityManager.persist(user);
 	}
 
-	public void pay(TransactionEntity bean) {
-		entityManager.persist(bean);
+	public void pay(UserEntity user, TransactionEntity transaction) {
+		entityManager.persist(transaction);
+		entityManager.persist(user);
 		
 		//calculate fee
-		float fee = bean.getAmount() * TRANSACTION_FEE_RATE;
-		FeeEntity feeEntity = new FeeEntity(bean, fee);
+		float fee = transaction.getAmount() * TRANSACTION_FEE_RATE;
+		FeeEntity feeEntity = new FeeEntity(transaction, fee);
 		entityManager.persist(feeEntity);
 	}
 	
@@ -53,24 +57,11 @@ public class TransactionBean implements TransactionBeanLocal {
 		return results;
 	}
 	
-	public List<TransactionEntity> showUserTransactions(UserEntity UserBean){
-		List<TransactionEntity> userTransactions = entityManager.createQuery(
-				"SELECT e FROM " + TransactionEntity.class.getName() + " e " +
-				"WHERE  recipient = " + UserBean + "OR sender = " + UserBean,
-				TransactionEntity.class).getResultList();
-//		entityManager.getTransaction().commit();
+	public Collection<TransactionEntity> showUserTransactions(UserEntity userBean){
+		Collection<TransactionEntity> userTransactions = userBean.getTransactions();
 		return userTransactions;
 		
 	}
-	
-	public List<TransactionEntity> showUserTransactions(UserEntity UserBean){
-		List<TransactionEntity> userTransactions = entityManager.createQuery(
-				"SELECT e FROM " + TransactionEntity.class.getName() + " e " +
-				"WHERE  recipient = " + UserBean + "OR sender = " + UserBean,
-				TransactionEntity.class).getResultList();
-//		entityManager.getTransaction().commit();
-		return userTransactions;
-		
-	}
+
 
 }

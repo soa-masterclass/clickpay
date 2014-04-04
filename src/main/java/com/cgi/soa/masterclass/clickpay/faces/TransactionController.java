@@ -37,7 +37,7 @@ public class TransactionController {
 				user.getFirstName(), user.getLastName(), Integer.parseInt(user
 						.getAccnumber()), user.getAccountFirstName(),
 				user.getAccountLastName());
-
+		
 		/*
 		if(transaction.getPurpose()="")  transactionBean.clear(TransactionEntity);
 		if(transaction.getPurpose()="")  transactionBean.deposit(TransactionEntity);

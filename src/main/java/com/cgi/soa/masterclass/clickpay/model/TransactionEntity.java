@@ -14,9 +14,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.cgi.soa.masterclass.clickpay.faces.User;
-
-
 
 /**
  * Entity implementation class for Entity: Transaction

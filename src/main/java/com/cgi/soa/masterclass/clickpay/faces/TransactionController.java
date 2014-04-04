@@ -20,6 +20,20 @@ public class TransactionController {
 	@Inject
 	private TransactionBeanLocal transactionBean;
 
+	public String makePay() {
+		return "/transactions/index.html?faces-redirect=true";
+
+	}
+	
+	public String makeDeposit() {
+		return "/transactions/index.html?faces-redirect=true";
+
+	}
+	
+	public String makeClearance() {
+		return "/transactions/index.html?faces-redirect=true";
+
+	}
 
 	public List<Transaction> getUserTransactions() {
 

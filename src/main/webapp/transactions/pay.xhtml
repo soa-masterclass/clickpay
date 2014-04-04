@@ -52,7 +52,7 @@
     </div>
 
     <div class="container">
-      <h1>Pay for Marc Mustermann</h1>
+      <h1>Pay for User: #{user.name}</h1>
       
 		<form jsf:id="form">
 			<div class="form-group">
@@ -73,7 +73,7 @@
 					required="required" jsf:required="true"
 					placeholder="Enter Amount" />
 			</div>
-			<button type="submit" class="btn btn-default" >Pay</button>
+			<button type="submit" class="btn btn-default" jsf:action="#{transactionController.createTransaction}">Pay</button>
 		</form>
 
       <hr />

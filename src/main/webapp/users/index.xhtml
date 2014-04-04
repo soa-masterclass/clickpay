@@ -84,7 +84,7 @@
 			<td>#{o.accountFirstName}</td>
 			<td>#{o.accountLastName}</td>
 			<td align="right">200,98</td>
-			<td><a jsf:outcome="/transactions/index.xhtml" jsf:action="#{transactionController.showUserTransactions}">Transactions</a></td>
+			<td><a jsf:outcome="/transactions/index.xhtml?userId=#{o.id}">Transactions</a></td>
 		</tr>
 	 
 	   </ui:repeat>

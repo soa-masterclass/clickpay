@@ -30,17 +30,21 @@ public class TransactionBean implements TransactionBeanLocal {
 	}
 
 	public void deposit(UserEntity user, TransactionEntity transaction) {
+		user.getTransactions().add(transaction);
 		entityManager.persist(transaction);
 		entityManager.persist(user);
+		
 
 	}
 
 	public void clear(UserEntity user, TransactionEntity transaction) {
+		user.getTransactions().add(transaction);
 		entityManager.persist(transaction);
 		entityManager.persist(user);
 	}
 
 	public void pay(UserEntity user, TransactionEntity transaction) {
+		user.getTransactions().add(transaction);
 		entityManager.persist(transaction);
 		entityManager.persist(user);
 		

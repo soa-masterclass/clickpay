@@ -17,13 +17,22 @@ public class User implements Serializable {
 	private String accountLastName;
 //	private float balance;
 	private String email;
+	private int id;
 	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public User() {
 		//
 	}
 
 	public User(String firstName, String lastName, String accnumber,
-			String accountFirstName, String accountLastName, String email) {
+			String accountFirstName, String accountLastName, String email, int id) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -31,6 +40,7 @@ public class User implements Serializable {
 		this.accountFirstName = accountFirstName;
 		this.accountLastName = accountLastName;
 		this.email = email;
+		this.id = id;
 	}
 
 	public String getFirstName() {

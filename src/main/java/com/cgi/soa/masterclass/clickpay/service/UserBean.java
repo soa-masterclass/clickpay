@@ -17,7 +17,7 @@ public class UserBean implements UserBeanLocal {
 	@PersistenceContext
 	private EntityManager entityManager;
 
-	
+	private UserEntity userEntity;
 	/**
 	 * Default constructor.
 	 */
@@ -26,10 +26,14 @@ public class UserBean implements UserBeanLocal {
 	}
 
 	@Override
-	public void createUser(UserEntity user) {
+	public int createUser(UserEntity user) {
 		
 //		entityManager.getTransaction().begin();
 		entityManager.persist(user);
+		
+//		entityManager.refresh(user);
+		
+		return user.getId();
 //		entityManager.getTransaction().commit();
 
 	}
@@ -43,6 +47,11 @@ public class UserBean implements UserBeanLocal {
 //		entityManager.getTransaction().commit();
 		return results;
 
+	}
+
+	public UserEntity findUserById(Integer valueOf) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
  

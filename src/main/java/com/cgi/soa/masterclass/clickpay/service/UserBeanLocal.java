@@ -9,9 +9,9 @@ import com.cgi.soa.masterclass.clickpay.model.UserEntity;
 @Local
 public interface UserBeanLocal {
 	
-	public void createUser(UserEntity user);
+	public int createUser(UserEntity user);
 	
-	
+	public UserEntity findUserById(Integer valueOf);
 	
 	public List<UserEntity> showAllUsers();
 

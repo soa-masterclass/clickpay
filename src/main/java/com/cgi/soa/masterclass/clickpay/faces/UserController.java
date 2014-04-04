@@ -33,7 +33,7 @@ public class UserController implements Serializable {
 						.getAccnumber()), user.getAccountFirstName(),
 				user.getAccountLastName());
 
-		userBean.createUser(userEntity);
+		int id = userBean.createUser(userEntity);
 		return "/users/index.html?faces-redirect=true";
 
 	}
@@ -45,7 +45,7 @@ public class UserController implements Serializable {
 			allUsers.add(new User(entity.getFirstname(), entity.getLastname(),
 					String.valueOf(entity.getAccnumber()), entity
 							.getAcc_firstname(), entity.getAcc_lastname(),
-					entity.getEmail()));
+					entity.getEmail(), entity.getId()));
 		}
 		return allUsers;
 	}

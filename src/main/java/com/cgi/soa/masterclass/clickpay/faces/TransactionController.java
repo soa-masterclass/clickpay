@@ -47,7 +47,7 @@ public class TransactionController {
 
 	}
 
-	public List<Transaction> showUserTransactions() {
+	public List<Transaction> getUserTransactions() {
 
 		userTransactions.clear();
 		/*
@@ -56,8 +56,19 @@ public class TransactionController {
 					entity.getTransdate(), entity.getPurpose(), entity.getAmount()  ));
 					
 		}
-		*/
+		//*/
 		return userTransactions;
+	}
+	
+	public User getTransaction() {
+		if (user == null) {
+			user = new User();
+		}
+		return user;
+	}
+
+	public void setTransaction(Transaction transaction) {
+		this.transaction = transaction;
 	}
 
 

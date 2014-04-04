@@ -58,6 +58,7 @@ public class TransactionBean implements TransactionBeanLocal {
 	}
 	
 	public Collection<TransactionEntity> showUserTransactions(UserEntity userBean){
+		entityManager.refresh(userBean);
 		Collection<TransactionEntity> userTransactions = userBean.getTransactions();
 		return userTransactions;
 		

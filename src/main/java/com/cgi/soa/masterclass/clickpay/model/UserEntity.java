@@ -22,7 +22,7 @@ import javax.persistence.Table;
 public class UserEntity implements Serializable {
 
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="sender")
-	private Collection<TransactionEntity> transaction;
+	private Collection<TransactionEntity> transactions;
 	   
 	@Id  
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -133,6 +133,15 @@ public class UserEntity implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+	
+	public Collection<TransactionEntity> getTransactions() {
+		return transactions;
+	}
 
+	public void setTransactions(Collection<TransactionEntity> transactions) {
+		this.transactions = transactions;
+	}
+	
+	
    
 }

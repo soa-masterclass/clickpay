@@ -23,7 +23,7 @@ import javax.persistence.Table;
 @Table
 public class TransactionEntity implements Serializable {
 
-	@OneToOne
+	@OneToOne(mappedBy="transaction")
 	private FeeEntity fee;
 		
 	@Id
@@ -35,6 +35,7 @@ public class TransactionEntity implements Serializable {
 	private UserEntity sender;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn
 	private UserEntity recipient;
 	
 	@Column

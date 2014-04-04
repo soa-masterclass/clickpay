@@ -1,10 +1,14 @@
 package com.cgi.soa.masterclass.clickpay.service;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import com.cgi.soa.masterclass.clickpay.model.FeeEntity;
 import com.cgi.soa.masterclass.clickpay.model.TransactionEntity;
+import com.cgi.soa.masterclass.clickpay.model.UserEntity;
 
 /**
  * Session Bean implementation class TransactionBean
@@ -21,7 +25,7 @@ public class TransactionBean implements TransactionBeanLocal {
 	 * Default constructor.
 	 */
 	public TransactionBean() {
-		// TODO Auto-generated constructor stub
+		// 
 	}
 
 	public void deposit(TransactionEntity bean) {
@@ -38,7 +42,25 @@ public class TransactionBean implements TransactionBeanLocal {
 		
 		//calculate fee
 		float fee = bean.getAmount() * TRANSACTION_FEE_RATE;
-//		FeeEntity feeEntity = new FeeEntity();
+		FeeEntity feeEntity = new FeeEntity(bean, fee);
+		entityManager.persist(feeEntity);
+	}
+	
+	public List<FeeEntity> getRevenue() {
+		List<FeeEntity> results = entityManager.createQuery(
+				"SELECT e FROM " + FeeEntity.class.getName() + " e",
+				FeeEntity.class).getResultList();
+		return results;
+	}
+	
+	public List<TransactionEntity> showUserTransactions(UserEntity UserBean){
+		List<TransactionEntity> userTransactions = entityManager.createQuery(
+				"SELECT e FROM " + TransactionEntity.class.getName() + " e " +
+				"WHERE  recipient = " + UserBean + "OR sender = " + UserBean,
+				TransactionEntity.class).getResultList();
+//		entityManager.getTransaction().commit();
+		return userTransactions;
+		
 	}
 
 }

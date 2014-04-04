@@ -2,12 +2,13 @@ package com.cgi.soa.masterclass.clickpay.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 /**
@@ -26,10 +27,12 @@ public class FeeEntity implements Serializable {
 	}
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@OneToOne( cascade=CascadeType.ALL)
+	@PrimaryKeyJoinColumn
 	private int Id;
 	
 	@JoinColumn
+	@OneToOne (cascade=CascadeType.ALL)
 	private TransactionEntity transaction;
 	
 	@Column

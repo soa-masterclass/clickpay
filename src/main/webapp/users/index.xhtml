@@ -74,7 +74,7 @@
       	</thead>
       	<tbody>
  
-	   <ui:repeat var="o" value="#{userController.allUsers}" varStatus="status">
+	   <ui:repeat var="o" jsf:value="#{userController.allUsers}"  varStatus="status">
 	 
 		<tr>
 			<td>#{o.firstName}</td>
@@ -84,7 +84,7 @@
 			<td>#{o.accountFirstName}</td>
 			<td>#{o.accountLastName}</td>
 			<td align="right">200,98</td>
-			<td><a jsf:outcome="/transactions/index.xhtml">Transactions</a></td>
+			<td><a jsf:outcome="/transactions/index.xhtml" jsf:action="#{transactionController.showUserTransactions}">Transactions</a></td>
 		</tr>
 	 
 	   </ui:repeat>

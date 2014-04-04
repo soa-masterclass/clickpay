@@ -1,15 +1,17 @@
 package com.cgi.soa.masterclass.clickpay.model;
 
 import java.io.Serializable;
-
-
 import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.cgi.soa.masterclass.clickpay.faces.User;
@@ -24,16 +26,19 @@ import com.cgi.soa.masterclass.clickpay.faces.User;
 @Table
 public class TransactionEntity implements Serializable {
 
-	   
+	@OneToOne
+	private FeeEntity fee;
+		
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int Id;
 	
-	@Column
-	private User sender;
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn
+	private UserEntity sender;
 	
-	@Column
-	private User recipient;
+	@ManyToOne(fetch=FetchType.LAZY)
+	private UserEntity recipient;
 	
 	@Column
 	private Date transdate;
@@ -49,7 +54,7 @@ public class TransactionEntity implements Serializable {
 	public TransactionEntity() {
 	}   
 	
-	public TransactionEntity(User sender, User recipient,
+	public TransactionEntity(UserEntity sender, UserEntity recipient,
 			Date transdate, String purpose, float amount) {
 		super();
 		this.sender = sender;
@@ -66,18 +71,18 @@ public class TransactionEntity implements Serializable {
 	public void setId(int Id) {
 		this.Id = Id;
 	}   
-	public User getSender() {
+	public UserEntity getSender() {
 		return this.sender;
 	}
 
-	public void setSender(User sender) {
+	public void setSender(UserEntity sender) {
 		this.sender = sender;
 	}   
-	public User getRecipient() {
+	public UserEntity getRecipient() {
 		return this.recipient;
 	}
 
-	public void setRecipient(User recipient) {
+	public void setRecipient(UserEntity recipient) {
 		this.recipient = recipient;
 	}   
 	public Date getTransdate() {

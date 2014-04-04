@@ -62,5 +62,15 @@ public class TransactionBean implements TransactionBeanLocal {
 		return userTransactions;
 		
 	}
+	
+	public List<TransactionEntity> showUserTransactions(UserEntity UserBean){
+		List<TransactionEntity> userTransactions = entityManager.createQuery(
+				"SELECT e FROM " + TransactionEntity.class.getName() + " e " +
+				"WHERE  recipient = " + UserBean + "OR sender = " + UserBean,
+				TransactionEntity.class).getResultList();
+//		entityManager.getTransaction().commit();
+		return userTransactions;
+		
+	}
 
 }
